@@ -18,8 +18,8 @@ except ImportError:
     HAS_API = False
 
 if HAS_API:
-    from poly_reducer import PolyReducer, analyze
-    from poly_reducer.models import MeshAnalysis
+    from polyreducer import PolyReducer, analyze
+    from polyreducer.models import MeshAnalysis
     
     # =========================================================================
     # Models

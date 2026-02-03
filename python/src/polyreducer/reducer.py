@@ -9,7 +9,7 @@ import time
 from pathlib import Path
 from typing import Optional, Union, Callable
 
-from poly_reducer.models import (
+from polyreducer.models import (
     MeshAnalysis,
     ReductionResult,
     ReductionSettings,

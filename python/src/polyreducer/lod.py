@@ -6,8 +6,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional, Union, Callable
 
-from poly_reducer.models import LODSpec, ReductionResult
-from poly_reducer.reducer import PolyReducer
+from polyreducer.models import LODSpec, ReductionResult
+from polyreducer.reducer import PolyReducer
 
 
 @dataclass

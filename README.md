@@ -2,7 +2,7 @@
 
 Smart headless polygon reduction for VFX/Game pipelines. Uses Blender for decimation with intelligent analysis for optimal results.
 
-[![Python CI](https://github.com/voidreamer/poly-reducer/actions/workflows/python-ci.yml/badge.svg)](https://github.com/voidreamer/poly-reducer/actions/workflows/python-ci.yml)
+[![Python CI](https://github.com/voidreamer/polyreducer/actions/workflows/python-ci.yml/badge.svg)](https://github.com/voidreamer/polyreducer/actions/workflows/python-ci.yml)
 
 ## Features
 
@@ -16,7 +16,7 @@ Smart headless polygon reduction for VFX/Game pipelines. Uses Blender for decima
 ## Installation
 
 ```bash
-pip install poly-reducer
+pip install polyreducer
 
 # Blender must be installed and accessible in PATH
 # Or set BLENDER_PATH environment variable
@@ -49,7 +49,7 @@ polyreduce model.fbx --lod-chain 100000,50000,10000,1000
 ### Python API
 
 ```python
-from poly_reducer import reduce, analyze, LODChain
+from polyreducer import reduce, analyze, LODChain
 
 # Simple reduction
 result = reduce(
@@ -80,8 +80,8 @@ for lod in lods:
 ### Pipeline Integration
 
 ```python
-from poly_reducer import PolyReducer
-from poly_reducer.backends import BlenderBackend
+from polyreducer import PolyReducer
+from polyreducer.backends import BlenderBackend
 
 # Configure reducer
 reducer = PolyReducer(
@@ -115,7 +115,7 @@ results = reducer.batch_reduce(
 Poly Reducer analyzes meshes to provide intelligent recommendations:
 
 ```python
-from poly_reducer import analyze
+from polyreducer import analyze
 
 analysis = analyze("complex_model.fbx")
 
@@ -177,7 +177,7 @@ analysis.suggested_lods = [
 Uses Blender's Decimate modifier. Best quality, supports all features.
 
 ```python
-from poly_reducer.backends import BlenderBackend
+from polyreducer.backends import BlenderBackend
 
 backend = BlenderBackend(
     blender_path="/path/to/blender",  # Optional, auto-detected
@@ -190,7 +190,7 @@ backend = BlenderBackend(
 Pure Python/C++ implementation. Faster but fewer features.
 
 ```python
-from poly_reducer.backends import OpenMeshBackend
+from polyreducer.backends import OpenMeshBackend
 
 backend = OpenMeshBackend()
 ```
@@ -201,7 +201,7 @@ Poly Reducer uses Rust for mesh analysis when available:
 
 ```bash
 # Install with Rust acceleration
-pip install poly-reducer[rust]
+pip install polyreducer[rust]
 ```
 
 Benchmarks (1M triangle mesh):
@@ -211,8 +211,8 @@ Benchmarks (1M triangle mesh):
 ## Development
 
 ```bash
-git clone https://github.com/voidreamer/poly-reducer.git
-cd poly-reducer
+git clone https://github.com/voidreamer/polyreducer.git
+cd polyreducer
 uv sync --dev
 
 # Run tests

@@ -15,7 +15,7 @@ except ImportError:
     HAS_CLI = False
 
 if HAS_CLI:
-    from poly_reducer import PolyReducer, LODChain
+    from polyreducer import PolyReducer, LODChain
 
     app = typer.Typer(
         name="polyreduce",
@@ -156,7 +156,7 @@ if HAS_CLI:
     ) -> None:
         """Start the REST API server."""
         try:
-            from poly_reducer.api import run_server
+            from polyreducer.api import run_server
             console.print(f"[green]Starting API server at http://{host}:{port}[/green]")
             run_server(host=host, port=port)
         except ImportError:
@@ -169,7 +169,7 @@ if HAS_CLI:
     ) -> None:
         """Start a background worker for processing jobs."""
         try:
-            from poly_reducer.worker import run_worker
+            from polyreducer.worker import run_worker
             console.print(f"[green]Starting worker, listening to {queue_url}[/green]")
             run_worker(queue_url)
         except ImportError:

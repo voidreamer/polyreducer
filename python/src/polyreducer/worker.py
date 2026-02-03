@@ -22,7 +22,7 @@ try:
 except ImportError:
     HAS_BOTO = False
 
-from poly_reducer import PolyReducer
+from polyreducer import PolyReducer
 
 
 class Worker:
@@ -221,7 +221,7 @@ class Worker:
     
     def _process_lod_chain_job(self, job: dict) -> None:
         """Process an LOD chain job."""
-        from poly_reducer import LODChain
+        from polyreducer import LODChain
         
         job_id = job["job_id"]
         params = job.get("params", {})

@@ -2,9 +2,9 @@
 
 __version__ = "0.1.0"
 
-from poly_reducer.reducer import PolyReducer, reduce, analyze
-from poly_reducer.models import ReductionResult, MeshAnalysis, LODSpec
-from poly_reducer.lod import LODChain
+from polyreducer.reducer import PolyReducer, reduce, analyze
+from polyreducer.models import ReductionResult, MeshAnalysis, LODSpec
+from polyreducer.lod import LODChain
 
 __all__ = [
     "PolyReducer",
