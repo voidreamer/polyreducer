@@ -1,0 +1,53 @@
+[project]
+name = "poly-reducer"
+version = "0.1.0"
+description = "Smart headless polygon reduction for VFX/Game pipelines"
+authors = [
+    { name = "Alejandro Cabrera", email = "voidreamer@gmail.com" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["vfx", "3d", "mesh", "polygon", "reduction", "lod", "decimation", "blender"]
+
+dependencies = []
+
+[project.optional-dependencies]
+cli = [
+    "typer>=0.9",
+    "rich>=13.0",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "mypy>=1.0",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+polyreduce = "poly_reducer.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/voidreamer/poly-reducer"
+Repository = "https://github.com/voidreamer/poly-reducer"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["python/src/poly_reducer"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
+markers = [
+    "blender: tests that require Blender",
+]
