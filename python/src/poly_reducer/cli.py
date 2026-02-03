@@ -149,6 +149,33 @@ if HAS_CLI:
         
         console.print(table)
 
+    @app.command("serve")
+    def serve(
+        host: str = typer.Option("0.0.0.0", "--host", "-h"),
+        port: int = typer.Option(8000, "--port", "-p"),
+    ) -> None:
+        """Start the REST API server."""
+        try:
+            from poly_reducer.api import run_server
+            console.print(f"[green]Starting API server at http://{host}:{port}[/green]")
+            run_server(host=host, port=port)
+        except ImportError:
+            console.print("[red]API dependencies not installed. Run: pip install poly-reducer[api][/red]")
+            raise typer.Exit(1)
+    
+    @app.command("worker")
+    def worker(
+        queue_url: str = typer.Option(..., "--queue", "-q", help="Redis URL or SQS queue"),
+    ) -> None:
+        """Start a background worker for processing jobs."""
+        try:
+            from poly_reducer.worker import run_worker
+            console.print(f"[green]Starting worker, listening to {queue_url}[/green]")
+            run_worker(queue_url)
+        except ImportError:
+            console.print("[red]Worker dependencies not installed. Run: pip install poly-reducer[worker][/red]")
+            raise typer.Exit(1)
+
 else:
     def app():
         print("CLI dependencies not installed. Run: pip install poly-reducer[cli]")

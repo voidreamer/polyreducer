@@ -17,11 +17,24 @@ cli = [
     "typer>=0.9",
     "rich>=13.0",
 ]
+api = [
+    "fastapi>=0.109",
+    "uvicorn>=0.27",
+    "python-multipart>=0.0.6",
+]
+worker = [
+    "redis>=5.0",
+    "boto3>=1.34",
+]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
     "mypy>=1.0",
     "ruff>=0.1",
+    "httpx>=0.26",
+]
+all = [
+    "poly-reducer[cli,api,worker,dev]",
 ]
 
 [project.scripts]
